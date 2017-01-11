@@ -1,0 +1,19 @@
+{
+  "name": "d3fast",
+  "version": "1.0.0",
+  "description": "Based on the D3,To quickly create a chart",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liujians/d3Fast.js.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liujians/d3Fast.js/issues"
+  },
+  "homepage": "https://github.com/liujians/d3Fast.js#readme"
+}

@@ -1,0 +1,73 @@
+<!-- test_2.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>饼状图</title>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="../dist/d3Fast.js"></script>
+</head>
+<body>
+	<div id="test" style="width:500px">
+		设置了父容器的饼状图、父容器宽度固定
+	</div>
+	<button id="testbtn">改变数据</button>
+
+	<script>
+		//create
+		var dataset = [ 30 , 10 , 43 , 55 , 13 ,25 , 40, 33 ,22];
+		var options = {
+			//parent container
+			parent:"#test", 
+			//svg id default:""
+			id:"mysvg",
+			// data default:[ 100,100,50 ]
+			dataset:dataset,
+			// innerRadius default:0
+			innerRadius:30,
+			// svg className default:""
+			className:"bgred",
+			
+			// padding of the default:0
+			interval:0.02,
+
+			// text show defalut:true
+			hasText:true,
+			// for text
+			fontSize:8,
+			fontColor:"#fff"
+			// percentage or number
+			percentage:true,
+		}
+		//
+		// According to the options to generate pie
+		var Pie = new d3.Pie(options);
+
+		// defaultpie the parent container is body
+		var defaultPie = new d3.Pie({});
+
+		// update
+		d3.select("#testbtn").on("click",function(){
+			var dataset = d3.range(6).map(d3.random.logNormal(100));
+			Pie.update(dataset);
+		})
+
+		//event
+		// select id 
+		d3.select("#mysvg").selectAll("g").select("path")
+			.on("mouseover",function(d){
+				d3.select(this)
+				.attr("fill","#ddd");
+			})
+			.on("mousemove",function(d,i){
+		        d3.select(this)
+		            .transition()
+		            .duration(500)
+		            .attr("fill",this.color);
+		    })
+		    .on("click",function(){
+		    		alert(this.color)
+		})
+	</script>
+</body>
+</html>
